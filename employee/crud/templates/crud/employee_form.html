@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Create Form</title>
+    <style>
+        /* Style the form container */
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Style form elements (input fields and buttons) */
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Style form buttons on hover */
+        form button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style form links */
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        /* Style links on hover */
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">Create or Update Employee</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'employee_list' %}">Back to Employee List</a>
+</body>
+</html>

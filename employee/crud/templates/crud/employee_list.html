@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee details</title>
+    <style>
+        /* Add CSS styles for the table and its elements */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        img {
+            max-width: 50px;
+            max-height: 50px;
+        }
+        a {
+            text-decoration: none;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee List</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Country</th>
+            <th>Address</th>
+            <th>Gender</th>
+            <th>Image</th>
+            <th>Action</th>
+        </tr>
+        {% for employee in employees %}
+            <tr>
+                <td>{{employee.id}}</td>
+                <td>{{ employee.Name }}</td>
+                <td>{{ employee.Email }}</td>
+                <td>{{ employee.PhoneNo }}</td>
+                <td>{{ employee.Country }}</td>
+                <td>{{ employee.Address }}</td>
+                <td>{{ employee.Gender }}</td>
+                <td><img src="{{ employee.Image.url }}" width="50" height="50" alt="{{ employee.Image }}'s Image"></td>
+                <td>
+                    <a href="{% url 'employee_update' employee.pk %}">Edit</a>
+                    <a href="{% url 'employee_delete' employee.pk %}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'employee_create' %}">Add Employee</a>
+</body>
+</html>
